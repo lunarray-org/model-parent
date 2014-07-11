@@ -1,0 +1,125 @@
+<!-- 
+	Model Tools.
+	Copyright (C) 2013 Pal Hargitai (pal@lunarray.org)
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU Lesser General Public License as
+	published by the Free Software Foundation, either version 3 of the License,
+	or (at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU Lesser General Public License for more details.
+
+	You should have received a copy of the GNU Lesser General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>Lunar Ray - Model - Parent</name>
+	<description>
+		A set of tools that allows (web)application to be developed more rapidly by leveraging the model.
+	</description>
+
+	<groupId>org.lunarray.model</groupId>
+	<artifactId>parent</artifactId>
+	<version>1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<organization>
+		<name>Lunar Ray</name>
+		<url>http://www.lunarray.org</url>
+	</organization>
+
+	<inceptionYear>2010</inceptionYear>
+
+	<scm>
+		<connection>scm:git:ssh://git@github.com/lunarray-org/model-parent.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/lunarray-org/model-parent.git</developerConnection>
+		<url>https://github.com/lunarray-org/model-parent</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>palhargitai</id>
+			<email>pal@lunarray.org</email>
+			<name>Pal Hargitai</name>
+			<url>http://www.palhargitai.eu</url>
+			<timezone>GMT+1</timezone>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<distribution>repo</distribution>
+			<name>GNU Lesser General Public License</name>
+			<url>https://www.gnu.org/licenses/lgpl.html</url>
+		</license>
+	</licenses>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<target>1.6</target>
+					<source>1.6</source>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<projectNameTemplate>model-[artifactId]-[version]</projectNameTemplate>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>java7</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.1</version>
+						<configuration>
+							<target>1.7</target>
+							<source>1.7</source>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>java8</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.1</version>
+						<configuration>
+							<target>1.8</target>
+							<source>1.8</source>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
