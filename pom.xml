@@ -33,6 +33,12 @@
 		<url>http://www.lunarray.org</url>
 	</organization>
 
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>9</version>
+	</parent>
+
 	<inceptionYear>2010</inceptionYear>
 
 	<scm>
@@ -61,6 +67,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.6</jdk.version>
 	</properties>
 
 	<build>
@@ -70,9 +77,49 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<target>1.6</target>
-					<source>1.6</source>
+					<target>${jdk.version}</target>
+					<source>${jdk.version}</source>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -91,35 +138,15 @@
 	<profiles>
 		<profile>
 			<id>java7</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.1</version>
-						<configuration>
-							<target>1.7</target>
-							<source>1.7</source>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+			<properties>
+				<jdk.version>1.7</jdk.version>
+			</properties>
 		</profile>
 		<profile>
 			<id>java8</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.1</version>
-						<configuration>
-							<target>1.8</target>
-							<source>1.8</source>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
+			<properties>
+				<jdk.version>1.8</jdk.version>
+			</properties>
 		</profile>
 	</profiles>
 </project>
